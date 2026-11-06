@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ingénieur logiciel C++ et Python · Docteur en physique">
+<title>Gonzalo Díaz López</title>
+<style>
+/* ------------------------------------------------------------------
+   Single — one column, the titles of the academic CV.
+
+   Two uses, one stylesheet: the paper CV (dates in a left gutter,
+   `layout: academic`) and the parsed-by-machine CV (dates flush right,
+   `dates: right`) — same title block, same section headings, so a
+   recruiter and an ATS never see two different documents.
+
+   No strip and no band: a parser reads left to right, and a narrow
+   column of colour costs it nothing but confusion. The header is one
+   unlabelled contact line: each item says what it is, and no label
+   needs translating.
+   ------------------------------------------------------------------ */
+
+:root {
+  --brand: #1E6F64;
+  --brand-pale: #C7E3DF;
+  --brand-soft: #8FBDB5;
+  --ink: #14161a;
+  --muted: #4a5c5a;
+  --gutter: 35mm;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  text-align: justify;
+  hyphens: manual;
+  color: var(--ink);
+  font-family: "Verdana", "DejaVu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.4pt;
+  line-height: 1.40;
+  -webkit-font-smoothing: antialiased;
+}
+
+@page {
+  size: A4;
+  margin: 15mm 26mm 15mm 26mm;
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: "Verdana", "DejaVu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 8pt;
+    color: #4a5c5a;
+    vertical-align: top;
+    padding-top: 2mm;
+  }
+}
+
+/* ---------- header ---------- */
+
+header.acad-head {
+  position: relative;
+  margin: 0 0 3mm;
+}
+
+p.stamp {
+  margin: 0;
+  font-size: 8.6pt;
+  color: var(--muted);
+}
+
+header.acad-head .photo {
+  position: absolute;
+  right: 0;
+  top: 9mm;
+  width: 32mm;
+}
+
+header.acad-head .photo img {
+  width: 32mm;
+  height: 32mm;
+  border-radius: 50%;
+}
+
+h1.name {
+  margin: 4mm 0 0;
+  font-size: 20pt;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.3px;
+}
+
+p.subtitle {
+  margin: 1mm 0 0;
+  font-size: 10.4pt;
+  font-style: italic;
+  color: var(--ink);
+}
+
+p.contact {
+  margin: 2mm 0 0;
+  font-size: 8.8pt;
+  text-align: left;
+  color: var(--ink);
+}
+
+/* An item never breaks inside; the line wraps between items. */
+p.contact .item { white-space: nowrap; }
+
+p.contact .sep {
+  padding: 0 1mm;
+  color: var(--brand-soft);
+}
+
+p.contact a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-top: 3.2mm;
+}
+
+/* A section that always opens a page. */
+section.new-page {
+  break-before: page;
+  margin-top: 0;
+}
+
+.acad h2 {
+  margin: 0 0 2mm;
+  padding-bottom: 1mm;
+  border-bottom: 1.6pt solid var(--brand);
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+/* Everything in a section starts at the same left edge as the entry text. */
+.acad section > p,
+.acad section > ul {
+  margin-left: var(--gutter);
+}
+
+/* A short section list (skills, teaching, publications) stays on one page. */
+section > ul {
+  break-inside: avoid;
+}
+
+.entry {
+  position: relative;
+  margin: 0 0 1.6mm var(--gutter);
+  break-inside: avoid;
+}
+
+/* ---------- dates flush right, no gutter ---------- */
+
+body.dates-right .acad section > p,
+body.dates-right .acad section > ul {
+  margin-left: 0;
+}
+
+body.dates-right .entry {
+  margin-left: 0;
+}
+
+body.dates-right p.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 4mm;
+  margin: 0.3mm 0 1mm;
+  font-size: 8.8pt;
+  font-style: italic;
+  color: var(--muted);
+}
+
+body.dates-right p.meta .m-left {
+  flex: 1 1 auto;
+}
+
+body.dates-right p.meta .m-date {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+p.gutter {
+  position: absolute;
+  left: calc(-1 * var(--gutter));
+  top: 0.4mm;
+  width: calc(var(--gutter) - 1mm);
+  margin: 0;
+  font-size: 8.4pt;
+  color: var(--muted);
+}
+
+h3 {
+  margin: 0;
+  font-size: 9.8pt;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+p.org {
+  margin: 0.3mm 0 0.9mm;
+  font-size: 9pt;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ---------- body ---------- */
+
+ul {
+  margin: 0.7mm 0 0;
+  padding-left: 3.8mm;
+  list-style: none;
+}
+
+li {
+  position: relative;
+  margin-bottom: 0.6mm;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  left: -3.4mm;
+  top: 1.2mm;
+  width: 1.2mm;
+  height: 1.2mm;
+  border: 0.8pt solid var(--brand);
+}
+
+p {
+  margin: 0.9mm 0;
+}
+
+strong { font-weight: 700; }
+
+em { font-style: italic; }
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+  border-bottom: 0.4pt solid var(--brand-soft);
+}
+
+code {
+  font-family: inherit;
+  font-size: 0.96em;
+}
+
+hr.rule {
+  border: 0;
+  border-top: 0.8pt solid var(--brand-soft);
+  margin: 4mm 0;
+}
+
+@media screen {
+  html { background: #eef2f1; }
+  body { font-size: 15px; line-height: 1.5; text-align: left; }
+  .toolbar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: flex-end; gap: 10px;
+    max-width: 860px; margin: 0 auto; padding: 12px 16px;
+    background: #eef2f1;
+  }
+  .toolbar a {
+    border: 0; padding: 8px 14px; border-radius: 6px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+  }
+  .toolbar a.primary { background: var(--brand); color: #fff; }
+  .toolbar a.primary:hover { background: #17584f; }
+  .toolbar a.secondary { color: var(--brand); background: #fff; border: 1px solid var(--brand-pale); }
+  main.page {
+    max-width: 860px; margin: 0 auto 40px; padding: 40px 56px;
+    background: #fff; border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.05);
+  }
+  h1.name { font-size: 32px; margin-top: 0; }
+  p.subtitle { font-size: 17px; }
+  p.contact { font-size: 14px; line-height: 1.9; }
+  p.contact .item { white-space: normal; }
+  .acad h2 { font-size: 19px; margin-top: 8px; }
+  h3 { font-size: 15.5px; }
+  body.dates-right p.meta, p.org { font-size: 14px; }
+  li::before { top: 8px; width: 6px; height: 6px; }
+  footer.site { max-width: 860px; margin: 0 auto 32px; text-align: center; font-size: 12px; color: var(--muted); }
+}
+@media screen and (max-width: 640px) {
+  main.page { overflow-wrap: anywhere; }
+  .toolbar { padding: 10px 12px; }
+  .toolbar a { padding: 7px 10px; font-size: 13px; }
+  main.page { padding: 24px 20px; border-radius: 0; margin-bottom: 20px; }
+  h1.name { font-size: 26px; }
+  body.dates-right p.meta { flex-direction: column; gap: 0; }
+}
+@media print {
+  .toolbar, footer.site { display: none; }
+}
+
+</style>
+</head>
+<body class="dates-right">
+<nav class="toolbar"><a class="secondary" href="../" hreflang="en">English</a><a class="primary" href="../cv-fr.pdf" download>Télécharger le PDF</a></nav>
+<main class="page acad">
+<header class="acad-head">
+<h1 class="name">Gonzalo Díaz López</h1>
+<p class="subtitle">Ingénieur logiciel C++ et Python · Docteur en physique</p>
+<p class="contact"><span class="item"><a href="mailto:gonzalodiazlopez10@gmail.com">gonzalodiazlopez10@gmail.com</a></span> <span class="sep">·</span> <span class="item">Paris, France</span> <span class="sep">·</span> <span class="item"><a href="https://gitlab.cern.ch/godiazlo">gitlab.cern.ch/godiazlo</a></span> <span class="sep">·</span> <span class="item"><a href="https://linkedin.com/in/gonzalo-d-503921241">linkedin.com/in/gonzalo-d-503921241</a></span></p>
+</header>
+<section>
+<h2>Profil</h2>
+<p>Ingénieur logiciel (C++, Python), docteur en physique, avec huit ans de développement de logiciels scientifiques. Développeur principal d'un framework public de traitement de données au CNRS, y compris son packaging et son intégration continue ; auteur de la réécriture du logiciel central d'une expérience, devenue la base du travail d'autres développeurs. S'adapte rapidement à de nouveaux domaines techniques, sur trois projets scientifiques, et a enseigné à l'université.</p>
+</section>
+<section>
+<h2>Expérience professionnelle</h2>
+<article class="entry">
+<h3>Ingénieur de recherche en logiciel</h3>
+<p class="meta"><span class="m-left">CNRS, LPNHE / Sorbonne Université, Paris</span><span class="m-date">depuis avril 2025</span></p>
+<ul>
+<li>Pilotage du développement d'<strong>Allen Core</strong>, framework C++ public de traitement de données scientifiques sur CPU et GPU, issu du système temps réel de l'expérience LHCb du CERN (<a href="https://gitlab.cern.ch/allen-core/allen-core">gitlab.cern.ch/allen-core</a>).</li>
+<li>Démonstrateur développé pour prouver que le framework est générique et utilisable par d'autres expériences : il exécute la chaîne d'algorithmes d'un autre projet, sur GPU ou CPU.</li>
+<li>Packaging du framework pour faciliter son adoption : build installable, conteneurs et intégration continue.</li>
+</ul>
+</article>
+<article class="entry">
+<h3>Chercheur postdoctoral</h3>
+<p class="meta"><span class="m-left">CNRS, LPNHE / Sorbonne Université, Paris</span><span class="m-date">avril 2023 – mars 2025</span></p>
+<ul>
+<li>Réécriture, seul, de C++ vers Python du logiciel d'Hyper-Kamiokande qui transforme les signaux du détecteur en événements physiques, en remplacement d'un code obsolète : plus rapide, plus simple à déboguer, il sert aujourd'hui de base aux projets de doctorants.</li>
+<li>Exécution de campagnes de simulation sur des clusters de calcul haute performance (HPC) pour tester et valider le nouveau logiciel.</li>
+<li>Encadrement d'un étudiant de master sur un projet de six mois.</li>
+</ul>
+</article>
+<article class="entry">
+<h3>Doctorant</h3>
+<p class="meta"><span class="m-left">IGFAE, Universidade de Santiago de Compostela</span><span class="m-date">septembre 2018 – février 2023</span></p>
+<ul>
+<li>Simulation du détecteur NEXT-100 accélérée d'un facteur 1 000 en remplaçant des calculs répétés par une table de correspondance, rendant réalisable un jeu de données équivalent à 20 ans de fonctionnement du détecteur.</li>
+<li>Implémentation de cette simulation en C++ et contribution au logiciel Python de reconstruction et d'analyse des données.</li>
+<li>Mise en œuvre de méthodes d'apprentissage automatique qui ont amélioré la classification des événements du détecteur.</li>
+</ul>
+</article>
+</section>
+<section>
+<h2>Compétences</h2>
+<ul>
+<li><strong>Programmation :</strong> C++, Python, Bash, CUDA (notions)</li>
+<li><strong>Ingénierie :</strong> conception orientée objet, programmation multithread, débogage mémoire (gdb), revue de code</li>
+<li><strong>Build, intégration et livraison :</strong> Git, CMake, GitLab CI/CD, Apptainer, Docker, pytest</li>
+<li><strong>Calcul :</strong> Linux, clusters HPC (Slurm), calcul sur GPU</li>
+<li><strong>Données et apprentissage automatique :</strong> NumPy, Pandas, HDF5, Matplotlib, scikit‑learn, PyTorch, Keras</li>
+</ul>
+</section>
+<section>
+<h2>Formation</h2>
+<article class="entry">
+<h3>Doctorat en physique des particules</h3>
+<p class="meta"><span class="m-left">Universidade de Santiago de Compostela</span><span class="m-date">2018 – 2023</span></p>
+<p>Thèse : <em>Sensitivity of the NEXT-100 detector to the search of neutrinoless double beta decay</em>.</p>
+</article>
+<article class="entry">
+<h3>Master en physique nucléaire et des particules</h3>
+<p class="meta"><span class="m-left">Universidade de Santiago de Compostela</span><span class="m-date">2017 – 2018</span></p>
+<p>Mémoire : <em>Études d'identification double bêta dans le détecteur NEW par réseaux de neurones</em>.</p>
+</article>
+<article class="entry">
+<h3>Licence en physique</h3>
+<p class="meta"><span class="m-left">Universidade de Santiago de Compostela</span><span class="m-date">2013 – 2017</span></p>
+<p>Mémoire : <em>Phénomènes critiques et effondrement gravitationnel</em>.</p>
+</article>
+</section>
+<section>
+<h2>Enseignement</h2>
+<ul>
+<li><strong>Physique numérique</strong>, niveau master (36 h) — Université Paris Cité, 2024–2025.</li>
+<li><strong>Analyse multivariée</strong> (Méthodes mathématiques III) et <strong>travaux pratiques de physique</strong>, niveau licence (20 h/an chacun) — Universidade de Santiago de Compostela, 2019–2021.</li>
+</ul>
+</section>
+<section>
+<h2>Publications</h2>
+<ul>
+<li><em>Energy calibration of the NEXT-White detector with 1% resolution near Qββ of ¹³⁶Xe</em>, JHEP 10 (2019) 230 (coauteur).</li>
+<li><em>Demonstration of the event identification capabilities of the NEXT-White detector</em>, JHEP 10 (2019) 052 (coauteur).</li>
+</ul>
+</section>
+<section>
+<h2>Langues</h2>
+<p>Espagnol et galicien (langues maternelles) · Anglais (professionnel) · Français (intermédiaire)</p>
+</section>
+</main>
+</body>
+</html>
