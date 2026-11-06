@@ -265,7 +265,9 @@ hr.rule {
    Print and PDF output are unaffected. */
 @media screen {
   html { background: #eef2f1; }
-  body { font-size: 15px; line-height: 1.5; text-align: left; }
+  body { font-size: 15px; line-height: 1.5; text-align: justify; hyphens: auto; }
+  /* A hyphen inside an address reads as part of it: links wrap, never hyphenate. */
+  a, p.contact { hyphens: manual; }
   .toolbar {
     position: sticky; top: 0; z-index: 10;
     display: flex; justify-content: flex-end; gap: 10px;
@@ -287,7 +289,6 @@ hr.rule {
   h1.name { font-size: 32px; margin-top: 0; }
   p.subtitle { font-size: 17px; }
   p.contact { font-size: 14px; line-height: 1.9; }
-  p.contact .item { white-space: normal; }
   .acad h2 { font-size: 19px; margin-top: 8px; }
   h3 { font-size: 15.5px; }
   body.dates-right p.meta, p.org { font-size: 14px; }
@@ -296,6 +297,7 @@ hr.rule {
 }
 @media screen and (max-width: 640px) {
   main.page { overflow-wrap: anywhere; }
+  p.contact .item { white-space: normal; }
   .toolbar { padding: 10px 12px; }
   .toolbar a { padding: 7px 10px; font-size: 13px; }
   main.page { padding: 24px 20px; border-radius: 0; margin-bottom: 20px; }
