@@ -1,7 +1,7 @@
 # Gonzalo Díaz López — CV
 
-Live at **https://gondiaz.github.io/personal/** ([français](https://gondiaz.github.io/personal/fr/)).
+Live at **https://gondiaz.github.io/personal/** (français) · [English](https://gondiaz.github.io/personal/en/) · [Español](https://gondiaz.github.io/personal/es/)
 
-PDF: [English](cv-en.pdf) · [Français](cv-fr.pdf)
+PDF: [Français](cv-fr.pdf) · [English](cv-en.pdf) · [Español](cv-es.pdf)
 
 Generated files — edit the source CV, not these.
